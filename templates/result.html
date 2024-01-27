@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        audio {
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+    <title>ICA Separation - Audio Result</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Audio Separation Result</h2>
+        <p>Sample Rate: {{ sr }}</p>
+        <p>Separated Audio:</p>
+        <pre>{{ audio }}</pre>
+        <audio controls>
+    <source src="http://127.0.0.1:5000/play_audio" type="audio/wav">
+    Your browser does not support the audio element.
+</audio>
+    </div>
+    <div class="container"><a href="{{ url_for('download_audio') }}" download="separated_audio.wav">Download Separated Audio</a></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
